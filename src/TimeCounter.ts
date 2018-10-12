@@ -27,8 +27,8 @@ export class TimeCounter {
     detectFileActive () : void {
         let actEditor = vscode.window.activeTextEditor;
         if (actEditor) {
-            let fileName = actEditor.document.fileName;
-            vscode.window.showInformationMessage(`now open: ${fileName}`);
+            let languageId = actEditor.document.languageId;
+            vscode.window.showInformationMessage(`now open:  ${languageId}`);
         }
     }
 
