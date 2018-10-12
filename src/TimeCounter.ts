@@ -25,7 +25,7 @@ export class TimeCounter {
 
         // let disp : vscode.Disposable[] = [];
         vscode.window.onDidChangeActiveTextEditor(this.detectFileActive, this, this.disposable);
-        // vscode.workspace.onDidCloseTextDocument(this.detectWorkspaceClosed, this, this.disposable);
+        // vscode.window.onDidChangeVisibleTextEditors(this.detectWorkspaceClosed, this, this.disposable);
     }
 
     showStatistics () : void {
