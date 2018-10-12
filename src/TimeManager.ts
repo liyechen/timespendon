@@ -1,7 +1,6 @@
 'use strict';
 
 import * as vscode from 'vscode';
-import * as util from 'util';
 
 export class TimeManager {
 
@@ -22,21 +21,38 @@ export class TimeManager {
     turnEditorTo ( languageId : string ) : void {
         let timePoint = this.context.globalState.get(this.timePoint);
         let lastModify = this.context.globalState.get(this.lastModify);
+        console.log(`timePoint: ${timePoint}, lastmodify: ${lastModify}`);
         let nowTimeStamp = Date.now();
         if (timePoint && lastModify) {
             // add time to last modify language
-            vscode.window.showInformationMessage(`last modify file type: ${lastModify} from ${timePoint} to ${nowTimeStamp}`);
+
+            let lastTotal = this.context.globalState.get(`${lastModify}`);
+            if (lastTotal) {
+                lastTotal = Number.parseInt(`${lastTotal}`) + nowTimeStamp - Number.parseInt(`${timePoint}`);
+            } else {
+                lastTotal = nowTimeStamp - Number.parseInt(`${timePoint}`);
+            }
+
+            // vscode.window.showInformationMessage(`You have spend ${lastTotal} milliseconds on ${lastModify}`);
+
+            this.context.globalState.update(`${lastModify}`, lastTotal);
+
 
             this.context.globalState.update(this.timePoint, nowTimeStamp);
             this.context.globalState.update(this.lastModify, languageId);
-
-            // vscode.window.showInformationMessage(`writing ${languageId} from ${fromStamp} to ${toStamp}....`);
         } else {
+            console.log('init time and language');
             this.context.globalState.update(this.timePoint, nowTimeStamp);
             this.context.globalState.update(this.lastModify, languageId);
         }
 
 
+    }
+
+    clearBaseData () : void {
+        console.log('dispose timemanager..');
+        this.context.globalState.update(this.timePoint, undefined);
+        this.context.globalState.update(this.lastModify, undefined);
     }
 
 }

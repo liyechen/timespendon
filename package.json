@@ -11,8 +11,7 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.showStatistics",
-        "onCommand:extension.start"
+        "*"
     ],
     "main": "./out/extension",
     "contributes": {
