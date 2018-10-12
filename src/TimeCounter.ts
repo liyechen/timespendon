@@ -1,15 +1,15 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import { TimeManager } from './TimeManager';
 
 export class TimeCounter {
 
-    private context : vscode.ExtensionContext;
+    private timeManager : TimeManager;
 
-    constructor (_context: vscode.ExtensionContext) {
+    constructor ( _context : vscode.ExtensionContext ) {
         this.init();
-        this.context = _context;
-        this.context.globalState.update("test", "23333");
+        this.timeManager = new TimeManager(_context);
     }
 
     init () : void {
@@ -20,8 +20,7 @@ export class TimeCounter {
     }
 
     start () : void {
-        let testStr = this.context.globalState.get("test");
-        vscode.window.showInformationMessage(`start to count .${testStr}`);
+        vscode.window.showInformationMessage(`start to count. `);
 
     }
 
@@ -33,7 +32,7 @@ export class TimeCounter {
         let actEditor = vscode.window.activeTextEditor;
         if (actEditor) {
             let languageId = actEditor.document.languageId;
-            vscode.window.showInformationMessage(`now open:  ${languageId}`);
+            this.timeManager.turnEditorTo(languageId);
         }
     }
 
