@@ -3,8 +3,13 @@
 import * as vscode from 'vscode';
 
 export class TimeCounter {
-    constructor () {
+
+    private context : vscode.ExtensionContext;
+
+    constructor (_context: vscode.ExtensionContext) {
         this.init();
+        this.context = _context;
+        this.context.globalState.update("test", "23333");
     }
 
     init () : void {
@@ -15,7 +20,9 @@ export class TimeCounter {
     }
 
     start () : void {
-        vscode.window.showInformationMessage('start to count .');
+        let testStr = this.context.globalState.get("test");
+        vscode.window.showInformationMessage(`start to count .${testStr}`);
+
     }
 
     showStatistics () : void {
