@@ -4,10 +4,26 @@ import * as vscode from 'vscode';
 
 export class TimeCounter {
     constructor () {
+        this.init();
+    }
+
+    init () : void {
+        vscode.window.showInformationMessage('TimeCounter init.');
+    }
+
+    start () : void {
+        vscode.window.showInformationMessage('start to count .');
+
 
     }
 
-    sayBad () {
-        vscode.window.showInformationMessage('??????!');
+    showStatistics () : void {
+
+        vscode.window.showInformationMessage('show... .');
+
+    }
+
+    dispose () : void {
+
     }
 }

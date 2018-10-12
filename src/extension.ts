@@ -8,6 +8,8 @@ import { TimeCounter } from './TimeCounter';
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
+    let timeCounter = new TimeCounter();
+
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "timespendon" is now active!');
@@ -15,20 +17,22 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.sayHello', () => {
+
+    let startTimeCounter = vscode.commands.registerCommand('extension.start', () => {
+        timeCounter.start();
+    });
+
+    context.subscriptions.push(startTimeCounter);
+
+
+    let showStatistics = vscode.commands.registerCommand('extension.showStatistics', () => {
         // The code you place here will be executed every time your command is executed
 
         // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
+        timeCounter.showStatistics();
     });
 
-    let badExt = vscode.commands.registerCommand('extension.sayBad', () => {
-        let timeCounter = new TimeCounter();
-        timeCounter.sayBad();
-    });
-
-    context.subscriptions.push(disposable);
-    context.subscriptions.push(badExt);
+    context.subscriptions.push(showStatistics);
 }
 
 // this method is called when your extension is deactivated

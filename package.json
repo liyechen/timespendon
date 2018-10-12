@@ -11,19 +11,17 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello",
-        "onCommand:extension.sayBad"
+        "onCommand:extension.showStatistics",
+        "onCommand:extension.start"
     ],
     "main": "./out/extension",
     "contributes": {
-        "commands": [
-            {
-                "command": "extension.sayHello",
-                "title": "Hello World"
-            },
-            {
-                "command": "extension.sayBad",
-                "title": "SAY BAD"
+        "commands": [{
+                "command": "extension.start",
+                "title": "TimeSpendOn: START (start the ext to count)"
+            },{
+                "command": "extension.showStatistics",
+                "title": "TimeSpendOn: SHOW STATISTICS (show the whole time you spend on ...)"
             }
         ]
     },
