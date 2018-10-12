@@ -3,17 +3,15 @@
 import * as vscode from 'vscode';
 
 export class TimeCounter {
-
-    private disposable : any;
     constructor () {
         this.init();
-        this.disposable = [];
     }
 
     init () : void {
         vscode.window.showInformationMessage('TimeCounter init.');
 
-        vscode.window.onDidChangeActiveTextEditor(this.detectFileActive, this, this.disposable);
+        let disposable : vscode.Disposable[] = [];
+        vscode.window.onDidChangeActiveTextEditor(this.detectFileActive, this, disposable);
     }
 
     start () : void {
