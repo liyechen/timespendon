@@ -17,7 +17,6 @@ export class TimeManager {
     }
 
     init () : void {
-        console.log(this.isInited);
     }
 
     turnEditorTo ( languageId : string ) : void {
@@ -41,7 +40,6 @@ export class TimeManager {
             this.context.globalState.update(this.timePoint, nowTimeStamp);
             this.context.globalState.update(this.lastModify, languageId);
         } else {
-            console.log('init time and language');
             this.isInited = true;
             this.context.globalState.update(this.timePoint, nowTimeStamp);
             this.context.globalState.update(this.lastModify, languageId);
