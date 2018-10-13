@@ -36,6 +36,9 @@ export class TimeManager {
 
             vscode.window.showInformationMessage(`You have spend ${lastTotal} milliseconds on ${lastModify}`);
             this.context.globalState.update(`${lastModify}`, lastTotal);
+            
+
+
 
 
             this.context.globalState.update(this.timePoint, nowTimeStamp);
