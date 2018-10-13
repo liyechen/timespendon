@@ -17,6 +17,7 @@ export class TimeManager {
     }
 
     init () : void {
+
     }
 
     turnEditorTo ( languageId : string ) : void {
@@ -49,9 +50,6 @@ export class TimeManager {
     }
 
     clearBaseData () : void {
-        console.log('dispose timemanager..');
-        this.context.globalState.update(this.timePoint, undefined);
-        this.context.globalState.update(this.lastModify, undefined);
     }
 
 }

@@ -47,9 +47,7 @@ export class TimeCounter {
     dispose () : void {
         //dispose
         for (let theDisposable of this.disposable) {
-            console.log('disposing....');
             vscode.Disposable.from(theDisposable).dispose();
-            // theDisposable.dispose();
         }
         this.timeManager.clearBaseData();
         console.log('dispose timecounter.');

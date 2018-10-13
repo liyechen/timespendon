@@ -15,10 +15,12 @@
     ],
     "main": "./out/extension",
     "contributes": {
-        "commands": [{
+        "commands": [
+            {
                 "command": "extension.start",
                 "title": "TimeSpendOn: START (start the ext to count)"
-            },{
+            },
+            {
                 "command": "extension.showStatistics",
                 "title": "TimeSpendOn: SHOW STATISTICS (show the whole time you spend on ...)"
             }
