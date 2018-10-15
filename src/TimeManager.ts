@@ -6,18 +6,18 @@ export class TimeManager {
 
     private timePoint : string = 'time_point';
     private lastModify : string = 'last_modify';
-    private isInited : boolean;
+    private isInited : boolean = false;
+    private languages : string[] = [];
 
     private context : vscode.ExtensionContext;
 
     constructor ( _context : vscode.ExtensionContext ) {
         this.context = _context;
-        this.isInited = false;
         this.init();
     }
 
     init () : void {
-
+        vscode.languages.getLanguages().then(data => this.languages = data);
     }
 
     turnEditorTo ( languageId : string ) : void {
@@ -36,7 +36,7 @@ export class TimeManager {
 
             vscode.window.showInformationMessage(`You have spend ${lastTotal} milliseconds on ${lastModify}`);
             this.context.globalState.update(`${lastModify}`, lastTotal);
-            
+
 
 
 
@@ -50,6 +50,10 @@ export class TimeManager {
         }
 
 
+    }
+
+    visualizeData () : void {
+        console.log(this.languages);
     }
 
     clearBaseData () : void {
