@@ -2,6 +2,15 @@
 
 import * as vscode from 'vscode';
 
+
+//plaintext,Log,log,bat,clojure,coffeescript,jsonc,c,cpp,
+//csharp,css,dockerfile,fsharp,git-commit,git-rebase,diff,
+//ignore,go,groovy,handlebars,hlsl,html,ini,properties,java,
+//javascriptreact,javascript,jsx-tags,json,less,lua,makefile,
+//markdown,objective-c,objective-cpp,perl,perl6,php,powershell,
+//jade,python,r,razor,ruby,rust,scss,shaderlab,shellscript,sql,
+//swift,typescript,typescriptreact,vb,xml,xsl,yaml
+
 export class TimeManager {
 
     private timePoint : string = 'time_point';
