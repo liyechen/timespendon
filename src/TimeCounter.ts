@@ -1,6 +1,8 @@
 'use strict';
 
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+
 import { TimeManager } from './TimeManager';
 
 export class TimeCounter {
@@ -19,8 +21,9 @@ export class TimeCounter {
         vscode.window.onDidChangeActiveTextEditor(this.detectFileActive, this, this.disposable);
     }
 
-    showStatistics () : void {
+    exportStatics () : void {
         vscode.window.showInformationMessage('show... .');
+
     }
 
     detectFileActive () : void {
