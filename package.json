@@ -18,7 +18,7 @@
         "commands": [
             {
                 "command": "extension.showStatistics",
-                "title": "TimeSpendOn: SHOW STATISTICS (show the whole time you spend on ...)"
+                "title": "TimeSpendOn: SHOW STATISTICS"
             }
         ]
     },
