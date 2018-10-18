@@ -2,8 +2,9 @@
     "name": "timespendon",
     "displayName": "timespendon",
     "description": "count whole time you spend on javascript, python, c++ etc when you use vscode.",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "publisher": "liyechen",
+    "icon": "images/icon.png",
     "engines": {
         "vscode": "^1.28.0"
     },
