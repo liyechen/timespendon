@@ -91,9 +91,9 @@ export class TimeManager {
             secs = secs % 60;
         }
 
-        if (hours > 0) resStr += ` ${hours} hours`;
-        if (minutes > 0) resStr += `${minutes} minutes`;
-        resStr += ` ${secs}seconds`;
+        if (hours > 0) resStr += `${hours}hours `;
+        if (minutes > 0) resStr += `${minutes}minutes `;
+        resStr += `${secs}seconds`;
 
         return resStr;
     }
