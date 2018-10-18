@@ -21,9 +21,12 @@ export class TimeCounter {
         vscode.window.onDidChangeActiveTextEditor(this.detectFileActive, this, this.disposable);
     }
 
+    showStatics () : void {
+        this.timeManager.showStatics();
+    }
+
     exportStatics () : void {
         vscode.window.showInformationMessage('show... .');
-
     }
 
     detectFileActive () : void {

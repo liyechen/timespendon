@@ -43,7 +43,7 @@ export class TimeManager {
                 lastTotal = nowTimeStamp - Number.parseInt(`${timePoint}`);
             }
 
-            vscode.window.showInformationMessage(`You have spend ${lastTotal} milliseconds on ${lastModify}`);
+            // vscode.window.showInformationMessage(`You have spend ${lastTotal} milliseconds on ${lastModify}`);
             this.context.globalState.update(`${lastModify}`, lastTotal);
 
 
@@ -57,12 +57,49 @@ export class TimeManager {
             this.context.globalState.update(this.timePoint, nowTimeStamp);
             this.context.globalState.update(this.lastModify, languageId);
         }
+    }
 
+    showStatics () : void {
+        let showStr = 'Time you spend on:';
+        for (let language of this.languages) {
+            if (this.context.globalState.get(language) && this.notInList(language)) {
+                let milliSec = parseInt(`${this.context.globalState.get(language)}`);
+                showStr += `${language}: ${this.formatTime(milliSec)}`
+            }
+        }
 
+        vscode.window.showInformationMessage(showStr);
+    }
+
+    notInList ( language : string ) : boolean {
+        let lanSetArray = ["Log", "plaintext", "ignore"];
+        let lanSet = new Set(lanSetArray);
+        return !lanSet.has(language);
+    }
+
+    formatTime (milliSec : number) : string {
+        let resStr : string = '';
+        let hours : number = 0;
+        let minutes : number = 0;
+        let secs = Math.round(milliSec / 1000);
+        if (secs >= 60) {
+            let wholeMins = (secs - secs % 60) / 60;
+            if (wholeMins >= 60) {
+                hours = (wholeMins - wholeMins % 60) / 60;
+            }
+            minutes = wholeMins % 60;
+            secs = secs % 60;
+        }
+
+        if (hours > 0) resStr += `${hours}hours`;
+        if (minutes > 0) resStr += `${minutes}minutes`;
+        resStr += `${secs}seconds`;
+
+        return resStr;
     }
 
     visualizeData () : void {
-        console.log(this.languages);
+
     }
 
     clearBaseData () : void {
