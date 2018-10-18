@@ -16,7 +16,6 @@ export class TimeCounter {
     }
 
     init () : void {
-        console.log('TimeCounter init.');
         vscode.window.onDidChangeActiveTextEditor(this.detectFileActive, this, this.disposable);
     }
 
@@ -42,6 +41,5 @@ export class TimeCounter {
             vscode.Disposable.from(theDisposable).dispose();
         }
         this.timeManager.clearBaseData();
-        console.log('dispose timecounter.');
     }
 }
