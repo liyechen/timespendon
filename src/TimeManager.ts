@@ -60,14 +60,14 @@ export class TimeManager {
     }
 
     showStatics () : void {
-        let showStr = 'Time you spend on:';
+        let showStr = 'Time you spend on: | ';
         for (let language of this.languages) {
             if (this.context.globalState.get(language) && this.notInList(language)) {
                 let milliSec = parseInt(`${this.context.globalState.get(language)}`);
-                showStr += `${language}: ${this.formatTime(milliSec)}`
+                showStr += `${language}: ${this.formatTime(milliSec)} | `
             }
         }
-
+        showStr.substring(0, showStr.length - 2);
         vscode.window.showInformationMessage(showStr);
     }
 
@@ -91,7 +91,7 @@ export class TimeManager {
             secs = secs % 60;
         }
 
-        if (hours > 0) resStr += `${hours}hours`;
+        if (hours > 0) resStr += ` ${hours} hours`;
         if (minutes > 0) resStr += `${minutes}minutes`;
         resStr += `${secs}seconds`;
 
